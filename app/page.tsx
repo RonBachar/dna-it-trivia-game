@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RegistrationForm } from "@/components/RegistrationForm";
 
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(244,208,63,0.18),_transparent_35%),linear-gradient(135deg,_#000000,_#0b0b0b_55%,_#111111)] px-6 py-10">

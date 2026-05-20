@@ -27,11 +27,6 @@ textarea {
   transition-duration: 150ms;
 }
 
-.dna-logo-dark {
-  filter: invert(1) hue-rotate(180deg) saturate(1.7) brightness(1.12)
-    contrast(1.05);
-}
-
 @keyframes dnaGlowPulse {
   0%,
   100% {
