@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { brandConfettiColors, getJsConfetti } from "@/lib/confetti";
+import { QUESTION_COUNT } from "@/lib/quiz";
 import { formatDuration } from "@/lib/ranking";
 import type { Participant } from "@/types/db";
 
@@ -9,6 +11,20 @@ type LeaderboardPayload = {
   updatedAt: string;
 };
 
+type LeaderOverlay = {
+  participant: Participant;
+  isExiting: boolean;
+};
+
+function celebrateNewLeader() {
+  void getJsConfetti().then((jsConfetti) => {
+    void jsConfetti.addConfetti({
+      confettiColors: brandConfettiColors,
+      confettiNumber: 170,
+    });
+  });
+}
+
 export function LeaderboardTable() {
   const [payload, setPayload] = useState<LeaderboardPayload>({
     participants: [],
@@ -16,8 +32,12 @@ export function LeaderboardTable() {
   });
   const [hasMounted, setHasMounted] = useState(false);
   const [changedRows, setChangedRows] = useState<Set<string>>(new Set());
+  const [leaderOverlay, setLeaderOverlay] = useState<LeaderOverlay | null>(null);
   const previousRanksRef = useRef<Map<string, number>>(new Map());
+  const previousTopParticipantIdRef = useRef<string | null>(null);
   const clearPulseTimeoutRef = useRef<number | null>(null);
+  const overlayExitTimeoutRef = useRef<number | null>(null);
+  const overlayClearTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -35,6 +55,9 @@ export function LeaderboardTable() {
       if (isMounted) {
         const previousRanks = previousRanksRef.current;
         const nextChangedRows = new Set<string>();
+        const previousTopParticipantId = previousTopParticipantIdRef.current;
+        const nextTopParticipant = nextPayload.participants[0] ?? null;
+        const nextTopParticipantId = nextPayload.participants[0]?.id ?? null;
 
         nextPayload.participants.forEach((participant, index) => {
           const previousRank = previousRanks.get(participant.id);
@@ -50,6 +73,45 @@ export function LeaderboardTable() {
             index,
           ]),
         );
+        previousTopParticipantIdRef.current = nextTopParticipantId;
+
+        if (
+          previousTopParticipantId &&
+          nextTopParticipantId &&
+          previousTopParticipantId !== nextTopParticipantId
+        ) {
+          celebrateNewLeader();
+
+          if (nextTopParticipant) {
+            if (overlayExitTimeoutRef.current) {
+              window.clearTimeout(overlayExitTimeoutRef.current);
+            }
+
+            if (overlayClearTimeoutRef.current) {
+              window.clearTimeout(overlayClearTimeoutRef.current);
+            }
+
+            setLeaderOverlay({
+              participant: nextTopParticipant,
+              isExiting: false,
+            });
+
+            overlayExitTimeoutRef.current = window.setTimeout(() => {
+              setLeaderOverlay((current) =>
+                current
+                  ? {
+                      ...current,
+                      isExiting: true,
+                    }
+                  : null,
+              );
+            }, 3700);
+
+            overlayClearTimeoutRef.current = window.setTimeout(() => {
+              setLeaderOverlay(null);
+            }, 4000);
+          }
+        }
 
         if (nextChangedRows.size > 0) {
           setChangedRows(nextChangedRows);
@@ -78,6 +140,14 @@ export function LeaderboardTable() {
       if (clearPulseTimeoutRef.current) {
         window.clearTimeout(clearPulseTimeoutRef.current);
       }
+
+      if (overlayExitTimeoutRef.current) {
+        window.clearTimeout(overlayExitTimeoutRef.current);
+      }
+
+      if (overlayClearTimeoutRef.current) {
+        window.clearTimeout(overlayClearTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -91,11 +161,13 @@ export function LeaderboardTable() {
             Live Top 10 Leaderboard
           </p>
         </div>
-        <p className="text-right text-2xl font-bold text-[#E5E9ED]/75">
-          Auto-refreshes every 5s
-          <br />
-          {hasMounted ? new Date(payload.updatedAt).toLocaleTimeString() : ""}
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="text-right text-2xl font-bold text-[#E5E9ED]/75">
+            Auto-refreshes every 5s
+            <br />
+            {hasMounted ? new Date(payload.updatedAt).toLocaleTimeString() : ""}
+          </p>
+        </div>
       </div>
 
       <div className="relative z-10 grid min-h-0 flex-1 grid-rows-[auto_1fr] overflow-hidden rounded-3xl border border-white/10">
@@ -159,7 +231,7 @@ export function LeaderboardTable() {
                     isFirst ? "text-5xl text-[#F4D03F]" : "text-4xl text-white"
                   }`}
                 >
-                  {participant.score}/5
+                  {participant.score}/{QUESTION_COUNT}
                 </p>
 
                 <p
@@ -179,6 +251,28 @@ export function LeaderboardTable() {
         <p className="relative z-10 py-28 text-center text-5xl font-black text-[#E5E9ED]">
           Waiting for the first finished quiz.
         </p>
+      ) : null}
+
+      {leaderOverlay ? (
+        <div
+          className={`pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/72 backdrop-blur-sm ${
+            leaderOverlay.isExiting
+              ? "leader-overlay-exit"
+              : "leader-overlay-enter"
+          }`}
+        >
+          <div className="px-8 text-center">
+            <p className="text-8xl font-black tracking-tight text-[#F4D03F] drop-shadow-[0_0_36px_rgba(244,208,63,0.55)] xl:text-9xl">
+              NEW LEADER!
+            </p>
+            <p className="mt-8 text-6xl font-black text-white">
+              {leaderOverlay.participant.full_name}
+            </p>
+            <p className="mt-5 text-4xl font-bold text-[#E5E9ED]/75">
+              {leaderOverlay.participant.company}
+            </p>
+          </div>
+        </div>
       ) : null}
     </div>
   );

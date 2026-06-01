@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RegistrationForm } from "@/components/RegistrationForm";
-
+import { QUESTION_COUNT } from "@/lib/quiz";
 
 export default function Home() {
   return (
@@ -18,18 +18,18 @@ export default function Home() {
               className="mb-8 h-auto w-36 md:w-44"
             />
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#F4D03F]">
-              DNA IT x Nutanix
+              DnA IT × Commvault
             </p>
             <h1 className="max-w-3xl text-5xl font-black tracking-tight text-white sm:text-7xl">
-              Conference Trivia Challenge
+              Gen AI Trivia Challenge
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Register once, answer five IT trivia questions, and race the clock
-              for a spot on the booth leaderboard.
+              Register once, answer {QUESTION_COUNT} IT trivia questions, and
+              race the clock for a spot on the booth leaderboard.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
               <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2">
-                5 Questions
+                {QUESTION_COUNT} Questions
               </span>
               <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2">
                 20 Seconds Per Question!

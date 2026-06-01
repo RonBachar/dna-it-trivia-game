@@ -9,6 +9,7 @@ export async function GET() {
       .from("participants")
       .select("*")
       .not("finished_at", "is", null)
+      .gt("score", 0)
       .order("score", { ascending: false })
       .order("duration_ms", { ascending: true })
       .order("finished_at", { ascending: true })

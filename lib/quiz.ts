@@ -2,7 +2,7 @@ import type { Participant, Question } from "@/types/db";
 import { createParticipantKey, normalizeText } from "@/lib/normalize";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
-export const QUESTION_COUNT = 5;
+export const QUESTION_COUNT = 7;
 export const QUESTION_DURATION_MS = 20_000;
 export const QUIZ_DURATION_MS = QUESTION_COUNT * QUESTION_DURATION_MS;
 
@@ -200,7 +200,7 @@ export async function submitQuiz(
 }
 
 export async function getRank(participant: Participant) {
-  if (!participant.finished_at) {
+  if (!participant.finished_at || participant.score === 0) {
     return null;
   }
 
@@ -209,6 +209,7 @@ export async function getRank(participant: Participant) {
     .from("participants")
     .select("*")
     .not("finished_at", "is", null)
+    .gt("score", 0)
     .order("score", { ascending: false })
     .order("duration_ms", { ascending: true })
     .order("finished_at", { ascending: true });

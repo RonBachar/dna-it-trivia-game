@@ -69,6 +69,22 @@ textarea {
   animation: leaderboardRowUpdate 2.2s ease-out;
 }
 
+.result-card-entry {
+  animation: resultCardEntry 700ms ease-out;
+}
+
+.result-perfect-entry {
+  animation: resultPerfectEntry 850ms ease-out;
+}
+
+.leader-overlay-enter {
+  animation: leaderOverlayEnter 300ms ease-out;
+}
+
+.leader-overlay-exit {
+  animation: leaderOverlayExit 300ms ease-in forwards;
+}
+
 @keyframes leaderboardDrift {
   0% {
     transform: translate3d(0, 0, 0);
@@ -111,5 +127,66 @@ textarea {
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 0 rgba(244, 208, 63, 0);
     transform: scale(1);
+  }
+}
+
+@keyframes resultCardEntry {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes resultPerfectEntry {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.96);
+  }
+
+  35% {
+    opacity: 1;
+    transform: translate3d(-3px, 0, 0) scale(1.025);
+  }
+
+  50% {
+    transform: translate3d(3px, 0, 0) scale(1.02);
+  }
+
+  70% {
+    transform: translate3d(-2px, 0, 0) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes leaderOverlayEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -48px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes leaderOverlayExit {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -48px, 0);
   }
 }

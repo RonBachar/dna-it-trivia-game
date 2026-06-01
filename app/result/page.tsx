@@ -2,10 +2,50 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getParticipantIdFromCookie } from "@/lib/admin";
-import { getQuizForParticipant, getRank } from "@/lib/quiz";
+import { getQuizForParticipant, getRank, QUESTION_COUNT } from "@/lib/quiz";
 import { formatDuration } from "@/lib/ranking";
+import { ResultCelebration } from "@/components/ResultCelebration";
 
 export const dynamic = "force-dynamic";
+
+function getResultContent(score: number) {
+  if (score === QUESTION_COUNT) {
+    return {
+      headline: "PERFECT SCORE! 🏆",
+      message: "Outstanding work. You claimed the strongest possible result.",
+      cardClass:
+        "border-[#F4D03F]/45 bg-[#F4D03F]/12 shadow-[0_0_72px_rgba(244,208,63,0.32)] result-perfect-entry",
+      headlineClass: "text-[#F4D03F]",
+    };
+  }
+
+  if (score >= 4) {
+    return {
+      headline: "Solid! You made the board 💪",
+      message: "Strong score. Your result is now in the live ranking.",
+      cardClass:
+        "border-[#F4D03F]/30 bg-white/[0.08] shadow-[0_0_42px_rgba(244,208,63,0.18)] result-card-entry",
+      headlineClass: "text-white",
+    };
+  }
+
+  if (score >= 1) {
+    return {
+      headline: "You're on the board! 🎯",
+      message: "Your result is recorded on the leaderboard.",
+      cardClass: "border-white/10 bg-white/[0.08] shadow-2xl shadow-black/30 result-card-entry",
+      headlineClass: "text-white",
+    };
+  }
+
+  return {
+    headline:
+      "So close! You need at least one correct answer to enter the leaderboard. Better luck next time! 🤖",
+    message: "Your entry is complete and your result has been finalized.",
+    cardClass: "border-white/10 bg-white/[0.05] shadow-2xl shadow-black/30 result-card-entry",
+    headlineClass: "text-slate-200",
+  };
+}
 
 export default async function ResultPage() {
   const participantId = await getParticipantIdFromCookie();
@@ -25,10 +65,15 @@ export default async function ResultPage() {
   }
 
   const rank = await getRank(quiz.participant);
+  const score = quiz.participant.score;
+  const resultContent = getResultContent(score);
 
   return (
     <main className="flex min-h-screen items-center bg-[radial-gradient(circle_at_top,_rgba(244,208,63,0.16),_transparent_35%),linear-gradient(135deg,_#000000,_#111111)] px-6 py-10">
-      <section className="mx-auto w-full max-w-3xl rounded-[2rem] border border-white/10 bg-white/[0.08] p-8 text-center shadow-2xl shadow-black/30 backdrop-blur">
+      <ResultCelebration score={score} />
+      <section
+        className={`mx-auto w-full max-w-3xl rounded-[2rem] p-8 text-center backdrop-blur ${resultContent.cardClass}`}
+      >
         <Image
           src="/DNA.png"
           alt="DNA IT"
@@ -39,24 +84,30 @@ export default async function ResultPage() {
         <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F4D03F]">
           Final score
         </p>
-        <h1 className="mt-3 text-5xl font-black text-white">
-          {quiz.participant.score} / {quiz.questions.length}
+        <h1
+          className={`mt-3 text-4xl font-black sm:text-5xl ${resultContent.headlineClass}`}
+        >
+          {resultContent.headline}
         </h1>
+        <p className="mt-4 text-6xl font-black text-[#F4D03F]">
+          {score} / {QUESTION_COUNT}
+        </p>
         <p className="mt-4 text-xl text-slate-300">
-          Nice run,{" "}
+          {resultContent.message}
+        </p>
+        <p className="mt-3 text-lg text-slate-300">
           <span className="font-bold text-white">
             {quiz.participant.full_name}
           </span>
-          .
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <div className="rounded-3xl bg-slate-950/70 p-5">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
-              Rank
+              Leaderboard
             </p>
             <p className="mt-2 text-3xl font-black text-[#F4D03F]">
-              {rank ? `#${rank}` : "-"}
+              {rank ? `#${rank}` : "Not entered"}
             </p>
           </div>
           <div className="rounded-3xl bg-slate-950/70 p-5">
@@ -77,18 +128,12 @@ export default async function ResultPage() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <Link
-            href="/leaderboard"
-            className="rounded-2xl bg-[#F4D03F] px-5 py-3 font-black text-black shadow-[0_0_24px_rgba(244,208,63,0.18)] hover:bg-[#f7dc6f]"
-          >
-            View leaderboard
-          </Link>
+        <div className="mt-8 flex justify-center">
           <Link
             href="/"
-            className="rounded-2xl border border-white/15 px-5 py-3 font-black text-white hover:bg-white/10"
+            className="rounded-2xl bg-[#F4D03F] px-6 py-4 font-black text-black shadow-[0_0_24px_rgba(244,208,63,0.18)] hover:bg-[#f7dc6f]"
           >
-            Back to registration
+            Back to start
           </Link>
         </div>
       </section>

@@ -21,10 +21,10 @@ export default function LeaderboardPage() {
             />
             <div>
               <p className="text-2xl font-black uppercase tracking-[0.42em] text-[#F4D03F]">
-                DNA IT x Nutanix
+                DnA IT × Commvault
               </p>
               <h1 className="mt-2 text-6xl font-black tracking-tight text-white">
-                Conference Trivia Challenge
+                Gen AI Trivia Challenge
               </h1>
             </div>
           </div>
@@ -44,13 +44,13 @@ export default function LeaderboardPage() {
         <div className="relative h-12 overflow-hidden rounded-full border border-[#F4D03F]/25 bg-black/55 shadow-[0_0_28px_rgba(244,208,63,0.12)]">
           <div className="leaderboard-ticker absolute flex h-full items-center whitespace-nowrap text-2xl font-black uppercase tracking-[0.3em] text-[#F4D03F]">
             <span className="px-10">
-              DNA IT x Nutanix - Conference Trivia Challenge - Powered by AI
+              DnA IT × Commvault - Gen AI Trivia Challenge - Powered by AI
             </span>
             <span className="px-10">
-              DNA IT x Nutanix - Conference Trivia Challenge - Powered by AI
+              DnA IT × Commvault - Gen AI Trivia Challenge - Powered by AI
             </span>
             <span className="px-10">
-              DNA IT x Nutanix - Conference Trivia Challenge - Powered by AI
+              DnA IT × Commvault - Gen AI Trivia Challenge - Powered by AI
             </span>
           </div>
         </div>
