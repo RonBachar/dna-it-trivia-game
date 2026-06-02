@@ -37,10 +37,12 @@ export function RegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-[2rem] border border-white/15 bg-white/10 p-6 shadow-2xl shadow-black/30 backdrop-blur md:p-8"
+      className="rounded-[2rem] border border-[#F4D03F]/25 bg-black/45 p-6 shadow-[0_28px_90px_rgba(0,0,0,0.55),0_0_42px_rgba(244,208,63,0.1)] backdrop-blur-xl md:p-8"
     >
-      <h2 className="text-2xl font-black text-white">Join the challenge now!</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-300">
+      <h2 className="text-3xl font-black tracking-tight text-white">
+        Join the challenge now!
+      </h2>
+      <p className="mt-3 text-sm leading-6 text-slate-300">
         Use your real full name and company. Each participant can compete once.
       </p>
 
@@ -53,7 +55,7 @@ export function RegistrationForm() {
           maxLength={80}
           autoComplete="name"
           className="mt-2 w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-base text-slate-950 outline-none focus:border-[#F4D03F] focus:ring-4 focus:ring-[#F4D03F]/20"
-          placeholder="What's your full name?"
+          placeholder="What's your name?"
         />
       </label>
 
@@ -66,7 +68,7 @@ export function RegistrationForm() {
           maxLength={80}
           autoComplete="organization"
           className="mt-2 w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-base text-slate-950 outline-none focus:border-[#F4D03F] focus:ring-4 focus:ring-[#F4D03F]/20"
-          placeholder="Who's your daddy?"
+          placeholder="Company Name"
         />
       </label>
 
@@ -79,7 +81,7 @@ export function RegistrationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 w-full rounded-2xl bg-[#F4D03F] px-5 py-4 text-base font-black text-black shadow-[0_0_24px_rgba(244,208,63,0.18)] hover:bg-[#f7dc6f] disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-6 w-full rounded-2xl border border-[#fff4a3]/50 bg-[#F4D03F] px-5 py-4 text-base font-black text-black shadow-[0_14px_34px_rgba(244,208,63,0.28),inset_0_1px_0_rgba(255,255,255,0.55)] hover:bg-[#ffe16a] hover:shadow-[0_18px_44px_rgba(244,208,63,0.42),inset_0_1px_0_rgba(255,255,255,0.65)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Starting..." : "Start quiz"}
       </button>

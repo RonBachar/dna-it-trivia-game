@@ -85,6 +85,15 @@ textarea {
   animation: leaderOverlayExit 300ms ease-in forwards;
 }
 
+.registration-heading-shine {
+  background: linear-gradient(to right, #ffffff, #fff6b8, #f4d03f, #ffffff);
+  background-size: 500% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+
 @keyframes leaderboardDrift {
   0% {
     transform: translate3d(0, 0, 0);
@@ -188,5 +197,15 @@ textarea {
   100% {
     opacity: 0;
     transform: translate3d(0, -48px, 0);
+  }
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
