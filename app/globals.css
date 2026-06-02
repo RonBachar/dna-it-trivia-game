@@ -58,6 +58,18 @@ textarea {
   animation: leaderboardTicker 24s linear infinite;
 }
 
+.home-ticker-ltr {
+  width: max-content;
+  will-change: transform;
+  animation: homeTickerLeftToRight 36s linear infinite;
+}
+
+.home-ticker-rtl {
+  width: max-content;
+  will-change: transform;
+  animation: homeTickerRightToLeft 36s linear infinite;
+}
+
 .leaderboard-row-update {
   animation: leaderboardRowUpdate 2.2s ease-out;
 }
@@ -104,6 +116,26 @@ textarea {
 
   100% {
     transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes homeTickerLeftToRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes homeTickerRightToLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -202,3 +234,4 @@ textarea {
     background-position: 0% 50%;
   }
 }
+
