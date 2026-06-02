@@ -16,14 +16,14 @@ export default function Home() {
               <div className="absolute inset-[-28px] rounded-full bg-[#F4D03F]/16 blur-2xl" />
               <Image
                 src="/DNA.png"
-                alt="DNA IT"
+                alt="DnA IT"
                 width={210}
                 height={86}
                 priority
                 className="relative h-auto w-44 md:w-56"
               />
             </div>
-            <p className="mb-4 text-sm font-black uppercase tracking-[0.42em] text-[#F4D03F] drop-shadow-[0_0_18px_rgba(244,208,63,0.18)]">
+            <p className="mb-4 text-sm font-black tracking-[0.42em] text-[#F4D03F] drop-shadow-[0_0_18px_rgba(244,208,63,0.18)]">
               DnA IT × Commvault
             </p>
             <h1 className="registration-heading-shine max-w-3xl text-6xl font-black tracking-[-0.045em] sm:text-8xl">

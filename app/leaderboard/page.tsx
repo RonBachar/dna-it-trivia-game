@@ -13,14 +13,14 @@ export default function LeaderboardPage() {
           <div className="flex items-center gap-8">
             <Image
               src="/DNA.png"
-              alt="DNA IT"
+              alt="DnA IT"
               width={310}
               height={125}
               priority
               className="h-auto w-72"
             />
             <div>
-              <p className="text-2xl font-black uppercase tracking-[0.42em] text-[#F4D03F]">
+              <p className="text-2xl font-black tracking-[0.42em] text-[#F4D03F]">
                 DnA IT × Commvault
               </p>
               <h1 className="mt-2 text-6xl font-black tracking-tight text-white">
@@ -42,7 +42,7 @@ export default function LeaderboardPage() {
         </section>
 
         <div className="relative h-12 overflow-hidden rounded-full border border-[#F4D03F]/25 bg-black/55 shadow-[0_0_28px_rgba(244,208,63,0.12)]">
-          <div className="leaderboard-ticker absolute flex h-full items-center whitespace-nowrap text-2xl font-black uppercase tracking-[0.3em] text-[#F4D03F]">
+          <div className="leaderboard-ticker absolute flex h-full items-center whitespace-nowrap text-2xl font-black tracking-[0.3em] text-[#F4D03F]">
             <span className="px-10">
               DnA IT × Commvault - Gen AI Trivia Challenge - Powered by AI
             </span>

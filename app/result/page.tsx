@@ -76,7 +76,7 @@ export default async function ResultPage() {
       >
         <Image
           src="/DNA.png"
-          alt="DNA IT"
+          alt="DnA IT"
           width={150}
           height={62}
           className="mx-auto mb-6 h-auto w-32"

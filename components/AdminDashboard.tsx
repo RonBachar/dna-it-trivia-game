@@ -24,12 +24,12 @@ export function AdminDashboard({
           <div className="mb-3 flex items-center gap-3">
             <Image
               src="/DNA.png"
-              alt="DNA IT"
+              alt="DnA IT"
               width={120}
               height={50}
               className="h-auto w-24"
             />
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#F4D03F]">
+            <p className="text-xs font-bold tracking-[0.3em] text-[#F4D03F]">
               DnA IT × Commvault
             </p>
           </div>

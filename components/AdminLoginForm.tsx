@@ -40,7 +40,7 @@ export function AdminLoginForm() {
     >
       <Image
         src="/DNA.png"
-        alt="DNA IT"
+        alt="DnA IT"
         width={145}
         height={60}
         className="mb-6 h-auto w-32"
@@ -48,7 +48,7 @@ export function AdminLoginForm() {
       <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F4D03F]">
         Admin
       </p>
-      <h1 className="mt-3 text-4xl font-black text-white">DNA Team Login</h1>
+      <h1 className="mt-3 text-4xl font-black text-white">DnA Team Login</h1>
       <p className="mt-3 text-sm leading-6 text-slate-300">
         Enter the booth admin password to manage questions and results.
       </p>

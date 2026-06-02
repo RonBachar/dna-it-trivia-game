@@ -117,12 +117,12 @@ export function QuizForm({ participant, questions }: QuizFormProps) {
         <div className="w-full max-w-xl rounded-[2rem] border border-white/10 bg-white/[0.08] p-8 text-center shadow-2xl shadow-black/30 backdrop-blur">
           <Image
             src="/DNA.png"
-            alt="DNA IT"
+            alt="DnA IT"
             width={150}
             height={62}
             className="mx-auto mb-6 h-auto w-32"
           />
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#F4D03F]">
+          <p className="text-sm font-semibold tracking-[0.3em] text-[#F4D03F]">
             DnA IT × Commvault
           </p>
           <h1 className="mt-4 text-6xl font-black text-white">Ready?</h1>
@@ -158,7 +158,7 @@ export function QuizForm({ participant, questions }: QuizFormProps) {
           <div className="mb-3 flex items-center gap-3">
             <Image
               src="/DNA.png"
-              alt="DNA IT"
+              alt="DnA IT"
               width={120}
               height={50}
               className="h-auto w-24"

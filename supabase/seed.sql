@@ -15,7 +15,7 @@ insert into public.questions (prompt, options, correct_index) values
     0
   ),
   (
-    'What does DNA IT primarily help organizations modernize?',
+    'What does DnA IT primarily help organizations modernize?',
     '["Digital infrastructure and IT operations", "Office furniture", "Printed brochures", "Food delivery"]'::jsonb,
     0
   ),
