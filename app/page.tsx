@@ -87,12 +87,6 @@ export default function Home() {
                 One Entry Per Participant
               </span>
             </div>
-            <Link
-              href="/leaderboard"
-              className="mt-8 inline-flex rounded-full border border-[#F4D03F]/60 px-5 py-3 text-sm font-bold text-[#F4D03F] shadow-[0_0_24px_rgba(244,208,63,0.12)] hover:bg-[#F4D03F] hover:text-black"
-            >
-              View leaderboard
-            </Link>
           </div>
           <RegistrationForm />
         </section>
