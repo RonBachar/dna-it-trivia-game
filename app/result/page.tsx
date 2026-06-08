@@ -21,8 +21,8 @@ function getResultContent(score: number) {
 
   if (score >= 4) {
     return {
-      headline: "Solid! You made the board 💪",
-      message: "Strong score. Your result is now in the live ranking.",
+      headline: "Great score! 💪",
+      message: "Strong performance. Well played!",
       cardClass:
         "border-[#F4D03F]/30 bg-white/[0.08] shadow-[0_0_42px_rgba(244,208,63,0.18)] result-card-entry",
       headlineClass: "text-white",
@@ -31,8 +31,8 @@ function getResultContent(score: number) {
 
   if (score >= 1) {
     return {
-      headline: "You're on the board! 🎯",
-      message: "Your result is recorded on the leaderboard.",
+      headline: "Nice run! 🎯",
+      message: "Good effort — thanks for taking the challenge!",
       cardClass: "border-white/10 bg-white/[0.08] shadow-2xl shadow-black/30 result-card-entry",
       headlineClass: "text-white",
     };

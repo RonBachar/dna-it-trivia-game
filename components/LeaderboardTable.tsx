@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { brandConfettiColors, getJsConfetti } from "@/lib/confetti";
 import { QUESTION_COUNT } from "@/lib/quiz";
 import { formatDuration } from "@/lib/ranking";
@@ -253,27 +254,30 @@ export function LeaderboardTable() {
         </p>
       ) : null}
 
-      {leaderOverlay ? (
-        <div
-          className={`pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/72 backdrop-blur-sm ${
-            leaderOverlay.isExiting
-              ? "leader-overlay-exit"
-              : "leader-overlay-enter"
-          }`}
-        >
-          <div className="px-8 text-center">
-            <p className="text-8xl font-black tracking-tight text-[#F4D03F] drop-shadow-[0_0_36px_rgba(244,208,63,0.55)] xl:text-9xl">
-              NEW LEADER!
-            </p>
-            <p className="mt-8 text-6xl font-black text-white">
-              {leaderOverlay.participant.full_name}
-            </p>
-            <p className="mt-5 text-4xl font-bold text-[#E5E9ED]/75">
-              {leaderOverlay.participant.company}
-            </p>
-          </div>
-        </div>
-      ) : null}
+      {leaderOverlay && hasMounted
+        ? createPortal(
+            <div
+              className={`pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-black/72 backdrop-blur-sm ${
+                leaderOverlay.isExiting
+                  ? "leader-overlay-exit"
+                  : "leader-overlay-enter"
+              }`}
+            >
+              <div className="px-8 text-center">
+                <p className="text-8xl font-black tracking-tight text-[#F4D03F] drop-shadow-[0_0_36px_rgba(244,208,63,0.55)] xl:text-9xl">
+                  NEW LEADER!
+                </p>
+                <p className="mt-8 text-6xl font-black text-white">
+                  {leaderOverlay.participant.full_name}
+                </p>
+                <p className="mt-5 text-4xl font-bold text-[#E5E9ED]/75">
+                  {leaderOverlay.participant.company}
+                </p>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }

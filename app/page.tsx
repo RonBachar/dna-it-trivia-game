@@ -65,7 +65,7 @@ export default function Home() {
             </h1>
             <p className="mt-7 max-w-2xl text-xl font-medium leading-9 text-slate-200/90">
               Register once, answer {QUESTION_COUNT} IT trivia questions, and
-              race the clock for a spot on the booth leaderboard.
+              race the clock for a spot on the booth leaderboard!
             </p>
             <div className="mt-9 flex flex-wrap gap-3 text-sm font-bold text-slate-100">
               <span className="inline-flex items-center gap-2 rounded-full border border-[#F4D03F]/35 bg-black/35 px-5 py-2.5 shadow-[0_0_22px_rgba(244,208,63,0.1)] backdrop-blur">
