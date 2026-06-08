@@ -103,7 +103,7 @@ export function LeaderboardRotator() {
         }`}
         aria-hidden={currentScreen !== "invitation"}
       >
-        <InvitationScreen />
+        <InvitationScreen isVisible={currentScreen === "invitation"} />
       </div>
     </div>
   );
