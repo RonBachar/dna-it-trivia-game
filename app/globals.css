@@ -235,3 +235,27 @@ textarea {
   }
 }
 
+@keyframes timerUrgentPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.timer-urgent {
+  color: #ef4444;
+  font-size: 3.84rem; /* text-5xl (3rem) × 1.28 ≈ 28% larger */
+  text-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
+  animation: timerUrgentPulse 1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer-urgent {
+    animation: none;
+  }
+}
+

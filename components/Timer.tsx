@@ -37,13 +37,18 @@ export function Timer({ durationMs, timerKey, onExpire }: TimerProps) {
   }, [durationMs, timerKey]);
 
   const seconds = Math.ceil(remainingMs / 1000);
+  const isUrgent = seconds <= 5;
 
   return (
     <div className="rounded-3xl border border-[#F4D03F]/40 bg-[#F4D03F]/10 px-5 py-4 text-center shadow-[0_0_24px_rgba(244,208,63,0.14)]">
       <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#F4D03F]">
         Time left
       </p>
-      <p className="text-5xl font-black tabular-nums text-white">{seconds}s</p>
+      <p
+        className={`text-5xl font-black tabular-nums text-white transition-[color,transform,text-shadow] duration-300 ${isUrgent ? "timer-urgent" : ""}`}
+      >
+        {seconds}s
+      </p>
     </div>
   );
 }
