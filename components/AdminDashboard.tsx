@@ -53,6 +53,12 @@ export function AdminDashboard({
           >
             Export CSV
           </a>
+          <a
+            href="/api/admin/export-questions"
+            className="rounded-xl border border-[#F4D03F]/40 bg-black/35 px-3 py-2 text-xs font-black text-[#F4D03F] hover:bg-[#F4D03F]/10"
+          >
+            Export Questions to CSV
+          </a>
           <form action="/api/admin/logout" method="post">
             <button className="rounded-xl border border-white/15 px-3 py-2 text-xs font-black text-white hover:bg-white/10">
               Log out
