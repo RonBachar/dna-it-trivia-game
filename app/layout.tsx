@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gen AI Trivia Challenge | DnA IT × Commvault",
-  description: "DnA IT × Commvault Gen AI trivia challenge",
+  title: "Gen AI Trivia Challenge | DnA IT × Nutanix",
+  description: "DnA IT × Nutanix Gen AI trivia challenge",
 };
 
 export default function RootLayout({

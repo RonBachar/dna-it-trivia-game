@@ -52,7 +52,7 @@ export function InvitationScreen({ isVisible }: InvitationScreenProps) {
         </span>
       </p>
       <p className="mt-20 text-xl font-bold tracking-[0.42em] text-[#F4D03F]/60 sm:text-2xl">
-        DnA IT × Commvault
+        DnA IT × Nutanix
       </p>
     </div>
   );

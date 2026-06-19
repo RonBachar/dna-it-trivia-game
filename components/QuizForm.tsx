@@ -123,7 +123,7 @@ export function QuizForm({ participant, questions }: QuizFormProps) {
             className="mx-auto mb-6 h-auto w-32"
           />
           <p className="text-sm font-semibold tracking-[0.3em] text-[#F4D03F]">
-            DnA IT × Commvault
+            DnA IT × Nutanix
           </p>
           <h1 className="mt-4 text-6xl font-black text-white">Ready?</h1>
           <p className="mt-4 text-lg font-semibold text-slate-300">
