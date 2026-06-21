@@ -83,13 +83,19 @@ export function LeaderboardRotator() {
         <div className="relative h-12 overflow-hidden rounded-full border border-[#F4D03F]/25 bg-black/55 shadow-[0_0_28px_rgba(244,208,63,0.12)]">
           <div className="leaderboard-ticker absolute flex h-full items-center whitespace-nowrap text-2xl font-black tracking-[0.3em] text-[#F4D03F]">
             <span className="px-10">
-              DnA IT × Nutanix - Gen AI Trivia Challenge - Powered by AI
+              DnA IT × Nutanix  •  Conference Trivia Challenge  •  Register with
+              your full name and company as written on your badge  •  Gen AI Trivia
+              Challenge
             </span>
             <span className="px-10">
-              DnA IT × Nutanix - Gen AI Trivia Challenge - Powered by AI
+              DnA IT × Nutanix  •  Conference Trivia Challenge  •  Register with
+              your full name and company as written on your badge  •  Gen AI Trivia
+              Challenge
             </span>
             <span className="px-10">
-              DnA IT × Nutanix - Gen AI Trivia Challenge - Powered by AI
+              DnA IT × Nutanix  •  Conference Trivia Challenge  •  Register with
+              your full name and company as written on your badge  •  Gen AI Trivia
+              Challenge
             </span>
           </div>
         </div>

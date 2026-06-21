@@ -42,9 +42,13 @@ export function RegistrationForm() {
       <h2 className="text-3xl font-black tracking-tight text-white">
         Join the challenge now!
       </h2>
-      <p className="mt-3 text-sm leading-6 text-slate-300">
-        Use your real full name and company. Each participant can compete once.
-      </p>
+      <div className="mt-4 rounded-xl border border-[#F4D03F]/45 bg-[#F4D03F]/10 px-4 py-3">
+        <p className="text-sm leading-6 text-slate-200">
+          Use your real full name and company,{" "}
+          <span className="font-bold text-[#EF4444]">as written on your badge</span>
+          . Each participant can compete once.
+        </p>
+      </div>
 
       <label className="mt-6 block text-sm font-bold text-slate-100">
         Full name
