@@ -2,12 +2,17 @@
 
 import { useEffect } from "react";
 import { brandConfettiColors, getJsConfetti } from "@/lib/confetti";
+import type { Participant } from "@/types/db";
 
 type InvitationScreenProps = {
   isVisible: boolean;
+  topParticipant?: Participant | null;
 };
 
-export function InvitationScreen({ isVisible }: InvitationScreenProps) {
+export function InvitationScreen({
+  isVisible,
+  topParticipant,
+}: InvitationScreenProps) {
   useEffect(() => {
     if (!isVisible) {
       return;
@@ -33,6 +38,19 @@ export function InvitationScreen({ isVisible }: InvitationScreenProps) {
 
   return (
     <div className="flex h-full flex-col items-center justify-center px-10 py-8 text-center">
+      {topParticipant?.full_name ? (
+        <div className="mb-16">
+          <p className="text-2xl font-black tracking-[0.35em] text-[#F4D03F] sm:text-3xl">
+            🏆 THE WINNER IS
+          </p>
+          <p className="mt-6 text-6xl font-black tracking-tight text-white sm:text-7xl xl:text-8xl">
+            {topParticipant.full_name}
+          </p>
+          <p className="mt-4 text-3xl font-bold text-[#F4D03F]/75 sm:text-4xl">
+            {topParticipant.company}
+          </p>
+        </div>
+      ) : null}
       <h2 className="invitation-heading-pulse text-7xl font-black tracking-tight text-[#F4D03F] sm:text-8xl xl:text-9xl">
         PLAY THE CHALLENGE
       </h2>

@@ -4,11 +4,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { InvitationScreen } from "@/components/InvitationScreen";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
+import type { Participant } from "@/types/db";
 
 type Screen = "leaderboard" | "invitation";
 
 export function LeaderboardRotator() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("leaderboard");
+  const [topParticipant, setTopParticipant] = useState<Participant | null>(
+    null,
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -77,7 +81,7 @@ export function LeaderboardRotator() {
         </header>
 
         <section className="min-h-0 flex-1 py-7">
-          <LeaderboardTable />
+          <LeaderboardTable onTopParticipantChange={setTopParticipant} />
         </section>
 
         <div className="relative h-12 overflow-hidden rounded-full border border-[#F4D03F]/25 bg-black/55 shadow-[0_0_28px_rgba(244,208,63,0.12)]">
@@ -109,7 +113,10 @@ export function LeaderboardRotator() {
         }`}
         aria-hidden={currentScreen !== "invitation"}
       >
-        <InvitationScreen isVisible={currentScreen === "invitation"} />
+        <InvitationScreen
+          isVisible={currentScreen === "invitation"}
+          topParticipant={topParticipant}
+        />
       </div>
     </div>
   );

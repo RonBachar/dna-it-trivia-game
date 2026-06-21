@@ -7,6 +7,10 @@ import { QUESTION_COUNT } from "@/lib/quiz";
 import { formatDuration } from "@/lib/ranking";
 import type { Participant } from "@/types/db";
 
+type LeaderboardTableProps = {
+  onTopParticipantChange?: (participant: Participant | null) => void;
+};
+
 type LeaderboardPayload = {
   participants: Participant[];
   updatedAt: string;
@@ -26,7 +30,9 @@ function celebrateNewLeader() {
   });
 }
 
-export function LeaderboardTable() {
+export function LeaderboardTable({
+  onTopParticipantChange,
+}: LeaderboardTableProps = {}) {
   const [payload, setPayload] = useState<LeaderboardPayload>({
     participants: [],
     updatedAt: new Date().toISOString(),
@@ -127,6 +133,7 @@ export function LeaderboardTable() {
         }
 
         setPayload(nextPayload);
+        onTopParticipantChange?.(nextTopParticipant);
       }
     }
 
@@ -150,7 +157,7 @@ export function LeaderboardTable() {
         window.clearTimeout(overlayClearTimeoutRef.current);
       }
     };
-  }, []);
+  }, [onTopParticipantChange]);
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#F4D03F]/20 bg-black/60 p-5 shadow-2xl shadow-black/40 backdrop-blur">
