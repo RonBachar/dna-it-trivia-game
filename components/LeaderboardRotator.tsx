@@ -2,23 +2,31 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { CommvaultScreen } from "@/components/CommvaultScreen";
 import { InnovationScreen } from "@/components/InnovationScreen";
 import { InvitationScreen } from "@/components/InvitationScreen";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
+import { StrategyScreen } from "@/components/StrategyScreen";
 import type { Participant } from "@/types/db";
 
-type Screen = "leaderboard" | "invitation" | "innovation";
+type Screen = "leaderboard" | "invitation" | "innovation" | "strategy" | "commvault";
 
 const ROTATION_SEQUENCE: { screen: Screen; duration: number }[] = [
   { screen: "leaderboard", duration: 15000 },
   { screen: "invitation", duration: 8000 },
   { screen: "leaderboard", duration: 15000 },
   { screen: "innovation", duration: 8000 },
+  { screen: "leaderboard", duration: 15000 },
+  { screen: "strategy", duration: 8000 },
+  { screen: "leaderboard", duration: 15000 },
+  { screen: "commvault", duration: 8000 },
 ];
 
 export function LeaderboardRotator() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("leaderboard");
   const [innovationCycle, setInnovationCycle] = useState(0);
+  const [strategyCycle, setStrategyCycle] = useState(0);
+  const [commvaultCycle, setCommvaultCycle] = useState(0);
   const [topParticipant, setTopParticipant] = useState<Participant | null>(
     null,
   );
@@ -33,6 +41,14 @@ export function LeaderboardRotator() {
 
       if (screen === "innovation") {
         setInnovationCycle((cycle) => cycle + 1);
+      }
+
+      if (screen === "strategy") {
+        setStrategyCycle((cycle) => cycle + 1);
+      }
+
+      if (screen === "commvault") {
+        setCommvaultCycle((cycle) => cycle + 1);
       }
 
       setCurrentScreen(screen);
@@ -141,6 +157,28 @@ export function LeaderboardRotator() {
         aria-hidden={currentScreen !== "innovation"}
       >
         <InnovationScreen key={innovationCycle} />
+      </div>
+
+      <div
+        className={`leaderboard-screen-layer absolute inset-0 transition-opacity duration-500 ${
+          currentScreen === "strategy"
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={currentScreen !== "strategy"}
+      >
+        <StrategyScreen key={strategyCycle} />
+      </div>
+
+      <div
+        className={`leaderboard-screen-layer absolute inset-0 transition-opacity duration-500 ${
+          currentScreen === "commvault"
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={currentScreen !== "commvault"}
+      >
+        <CommvaultScreen key={commvaultCycle} />
       </div>
     </div>
   );

@@ -136,31 +136,31 @@ export function InnovationScreen() {
       <CornerAccent position="bottom-left" />
       <CornerAccent position="top-right" />
 
+      <div className="innovation-logo-fade absolute left-8 top-8 z-20 sm:left-10 sm:top-10">
+        <Image
+          src="/dna-it-black-logo.svg"
+          alt="DnA IT"
+          width={120}
+          height={120}
+          priority
+          className="h-auto w-24 sm:w-28 xl:w-32"
+        />
+      </div>
+
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-10 py-8">
         <div className="text-center">
-          <div className="innovation-logo-fade mb-6 flex justify-center sm:mb-8">
-            <Image
-              src="/dna-it-black-yellow-tp.svg"
-              alt="DnA IT"
-              width={200}
-              height={248}
-              priority
-              className="h-auto w-40 sm:w-44 xl:w-52"
-            />
-          </div>
-
           <p className="innovation-line-fade innovation-line-fade-1 text-5xl font-bold tracking-tight text-[#0a0a0a] sm:text-6xl xl:text-7xl">
             Delivering
           </p>
 
           <div className="innovation-line-fade innovation-line-fade-2 mt-1">
-            <span className="innovation-gold-shine text-7xl font-black leading-[0.95] tracking-[-0.03em] sm:text-8xl xl:text-[9.5rem]">
+            <span className="innovation-gold-shine text-7xl font-black leading-[0.95] tracking-[-0.03em] drop-shadow-[0_0_16px_rgba(218,165,32,0.35)] sm:text-8xl xl:text-[9.5rem]">
               Innovation
             </span>
           </div>
 
           <div className="innovation-line-fade innovation-line-fade-3 mt-5 flex flex-col items-center gap-3">
-            <p className="text-3xl font-normal tracking-wide text-[#4a4a4a] sm:text-4xl xl:text-5xl">
+            <p className="text-3xl font-normal tracking-wide text-[#0a0a0a] sm:text-4xl xl:text-5xl">
               Through
             </p>
             <span
@@ -172,7 +172,7 @@ export function InnovationScreen() {
           <div className="innovation-line-fade innovation-line-fade-4 mt-6">
             <p className="text-6xl font-bold tracking-tight text-[#0a0a0a] sm:text-7xl xl:text-8xl">
               Enterprise{" "}
-              <span className="innovation-gold-shine text-6xl font-black sm:text-7xl xl:text-8xl">
+              <span className="innovation-gold-shine text-6xl font-black drop-shadow-[0_0_16px_rgba(218,165,32,0.35)] sm:text-7xl xl:text-8xl">
                 AI
               </span>
             </p>

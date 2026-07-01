@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@keyframes cardGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 40px rgba(244, 208, 63, 0.35),
+      0 0 80px rgba(244, 208, 63, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 60px rgba(244, 208, 63, 0.55),
+      0 0 120px rgba(244, 208, 63, 0.25);
+  }
+}
+
 :root {
   --background: #000000;
   --foreground: #f8fafc;
@@ -297,6 +312,40 @@ textarea {
   }
 }
 
+@keyframes strategyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes strategyLogoFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes strategyTaglineFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .innovation-gold-shine {
   display: inline-block;
   color: transparent;
@@ -376,6 +425,238 @@ textarea {
   .invitation-heading-pulse,
   .invitation-arrow-swing,
   .invitation-arrow-swing-reverse {
+    animation: none;
+  }
+}
+
+.strategy-gold-title {
+  color: transparent;
+  background-image: linear-gradient(
+    120deg,
+    #d4a017 0%,
+    #f4c430 42%,
+    #d4a017 78%,
+    #f4c430 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.strategy-logo-fade {
+  opacity: 0;
+  animation: strategyLogoFadeIn 0.4s ease-out forwards;
+}
+
+.strategy-title-fade {
+  opacity: 0;
+  animation: strategyFadeIn 0.5s ease-out 0.4s forwards;
+}
+
+.strategy-hex-fade {
+  opacity: 0;
+  animation: strategyFadeIn 0.5s ease-out forwards;
+}
+
+.strategy-hex-fade-1 {
+  animation-delay: 0.9s;
+}
+
+.strategy-hex-fade-2 {
+  animation-delay: 1.2s;
+}
+
+.strategy-hex-fade-3 {
+  animation-delay: 1.5s;
+}
+
+.strategy-tagline-fade {
+  opacity: 0;
+  animation: strategyTaglineFadeIn 0.4s ease-out 2s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strategy-logo-fade,
+  .strategy-title-fade,
+  .strategy-hex-fade,
+  .strategy-tagline-fade {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes commvaultLogoFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes commvaultContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes commvaultImageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.commvault-logos-fade {
+  opacity: 0;
+  animation: commvaultLogoFadeIn 0.4s ease-out forwards;
+}
+
+.commvault-headline-fade {
+  opacity: 0;
+  animation: commvaultContentFadeIn 0.5s ease-out 0.4s forwards;
+}
+
+.commvault-bullet-fade {
+  opacity: 0;
+  animation: commvaultContentFadeIn 0.45s ease-out forwards;
+}
+
+.commvault-bullet-fade-1 {
+  animation-delay: 0.9s;
+}
+
+.commvault-bullet-fade-2 {
+  animation-delay: 1.2s;
+}
+
+.commvault-bullet-fade-3 {
+  animation-delay: 1.5s;
+}
+
+.commvault-images-fade {
+  opacity: 0;
+  animation: commvaultImageFadeIn 0.55s ease-out 1.8s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commvault-logos-fade,
+  .commvault-headline-fade,
+  .commvault-bullet-fade,
+  .commvault-images-fade {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes cyberCardGlowPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 40px rgba(244, 208, 63, 0.35),
+      0 0 80px rgba(244, 208, 63, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 60px rgba(244, 208, 63, 0.55),
+      0 0 120px rgba(244, 208, 63, 0.25);
+  }
+}
+
+@keyframes cyberCardLinesDrift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 140px 90px;
+  }
+}
+
+.cyber-card {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #f4d03f;
+  border-radius: 22px;
+  padding: 48px 56px;
+  background: linear-gradient(145deg, #111111 0%, #0a0a0a 52%, #070707 100%);
+  animation: cyberCardGlowPulse 3s ease-in-out infinite;
+}
+
+.cyber-card-lines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.06;
+  background-image: repeating-linear-gradient(
+    30deg,
+    rgba(244, 208, 63, 0.95) 0,
+    rgba(244, 208, 63, 0.95) 1px,
+    transparent 1px,
+    transparent 50px
+  );
+  animation: cyberCardLinesDrift 18s linear infinite;
+}
+
+.cyber-card-corners {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cyber-card-corners::before,
+.cyber-card-corners::after {
+  content: "";
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  opacity: 0.1;
+  background-image: radial-gradient(circle, rgba(244, 208, 63, 0.9) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.cyber-card-corners::before {
+  top: 14px;
+  left: 14px;
+}
+
+.cyber-card-corners::after {
+  right: 14px;
+  bottom: 14px;
+}
+
+.innovation-cyber-gold {
+  color: #f4d03f;
+  text-shadow: 0 0 40px rgba(244, 208, 63, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyber-card {
+    animation: none;
+    box-shadow:
+      0 0 40px rgba(244, 208, 63, 0.35),
+      0 0 80px rgba(244, 208, 63, 0.15);
+  }
+
+  .cyber-card-lines {
     animation: none;
   }
 }
