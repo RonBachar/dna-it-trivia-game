@@ -7,7 +7,7 @@ export default function Home() {
   const topTickerText =
     "GPT • Gemini • Claude • Copilot • Perplexity • Mistral • Llama • Grok • DeepSeek • Midjourney";
   const bottomTickerText =
-    "DnA IT × Nutanix  •  Conference Trivia Challenge  •  Gen AI Trivia Challenge";
+    "DnA IT × Commvault  •  Conference Trivia Challenge  •  Gen AI Trivia Challenge";
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_8%_8%,_rgba(244,208,63,0.22),_transparent_28%),radial-gradient(circle_at_92%_88%,_rgba(244,208,63,0.16),_transparent_30%),radial-gradient(circle_at_50%_0%,_rgba(255,255,255,0.06),_transparent_32%),linear-gradient(135deg,_#000000_0%,_#070707_42%,_#101010_100%)] px-6 py-10">
@@ -58,7 +58,7 @@ export default function Home() {
               />
             </div>
             <p className="mb-4 text-sm font-black tracking-[0.42em] text-[#F4D03F] drop-shadow-[0_0_18px_rgba(244,208,63,0.18)]">
-              DnA IT × Nutanix
+              DnA IT × Commvault
             </p>
             <h1 className="registration-heading-shine max-w-3xl text-6xl font-black tracking-[-0.045em] sm:text-8xl">
               Gen AI Trivia Challenge

@@ -30,7 +30,7 @@ export function AdminDashboard({
               className="h-auto w-24"
             />
             <p className="text-xs font-bold tracking-[0.3em] text-[#F4D03F]">
-              DnA IT × Nutanix
+              DnA IT × Commvault
             </p>
           </div>
           <h1 className="mt-1 text-3xl font-black text-white">
