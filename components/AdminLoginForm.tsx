@@ -39,10 +39,10 @@ export function AdminLoginForm() {
       className="w-full max-w-md rounded-[2rem] border border-white/10 bg-white/[0.08] p-8 shadow-2xl shadow-black/30 backdrop-blur"
     >
       <Image
-        src="/DNA.png"
+        src="/dna-it-white-logo.svg"
         alt="DnA IT"
         width={145}
-        height={60}
+        height={39}
         className="mb-6 h-auto w-32"
       />
       <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F4D03F]">

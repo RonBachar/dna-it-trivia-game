@@ -2,14 +2,23 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { InnovationScreen } from "@/components/InnovationScreen";
 import { InvitationScreen } from "@/components/InvitationScreen";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
 import type { Participant } from "@/types/db";
 
-type Screen = "leaderboard" | "invitation";
+type Screen = "leaderboard" | "invitation" | "innovation";
+
+const ROTATION_SEQUENCE: { screen: Screen; duration: number }[] = [
+  { screen: "leaderboard", duration: 15000 },
+  { screen: "invitation", duration: 8000 },
+  { screen: "leaderboard", duration: 15000 },
+  { screen: "innovation", duration: 8000 },
+];
 
 export function LeaderboardRotator() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("leaderboard");
+  const [innovationCycle, setInnovationCycle] = useState(0);
   const [topParticipant, setTopParticipant] = useState<Participant | null>(
     null,
   );
@@ -17,24 +26,28 @@ export function LeaderboardRotator() {
   useEffect(() => {
     let cancelled = false;
     let timeoutId = 0;
+    let rotationIndex = 0;
 
-    function scheduleRotation(screen: Screen) {
-      const duration = screen === "leaderboard" ? 15000 : 8000;
+    function scheduleRotation() {
+      const { screen, duration } = ROTATION_SEQUENCE[rotationIndex];
+
+      if (screen === "innovation") {
+        setInnovationCycle((cycle) => cycle + 1);
+      }
+
+      setCurrentScreen(screen);
 
       timeoutId = window.setTimeout(() => {
         if (cancelled) {
           return;
         }
 
-        const nextScreen: Screen =
-          screen === "leaderboard" ? "invitation" : "leaderboard";
-
-        setCurrentScreen(nextScreen);
-        scheduleRotation(nextScreen);
+        rotationIndex = (rotationIndex + 1) % ROTATION_SEQUENCE.length;
+        scheduleRotation();
       }, duration);
     }
 
-    scheduleRotation("leaderboard");
+    scheduleRotation();
 
     return () => {
       cancelled = true;
@@ -55,10 +68,10 @@ export function LeaderboardRotator() {
         <header className="flex items-center justify-between gap-10">
           <div className="flex items-center gap-8">
             <Image
-              src="/DNA.png"
+              src="/dna-it-white-logo.svg"
               alt="DnA IT"
               width={310}
-              height={125}
+              height={84}
               priority
               className="h-auto w-72"
             />
@@ -117,6 +130,17 @@ export function LeaderboardRotator() {
           isVisible={currentScreen === "invitation"}
           topParticipant={topParticipant}
         />
+      </div>
+
+      <div
+        className={`leaderboard-screen-layer absolute inset-0 transition-opacity duration-500 ${
+          currentScreen === "innovation"
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={currentScreen !== "innovation"}
+      >
+        <InnovationScreen key={innovationCycle} />
       </div>
     </div>
   );

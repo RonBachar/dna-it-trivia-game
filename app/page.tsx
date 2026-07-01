@@ -49,10 +49,10 @@ export default function Home() {
             <div className="relative mb-9 inline-flex">
               <div className="absolute inset-[-28px] rounded-full bg-[#F4D03F]/16 blur-2xl" />
               <Image
-                src="/DNA.png"
+                src="/dna-it-white-logo.svg"
                 alt="DnA IT"
                 width={210}
-                height={86}
+                height={57}
                 priority
                 className="relative h-auto w-44 md:w-56"
               />

@@ -55,7 +55,7 @@ export function InvitationScreen({
         PLAY THE CHALLENGE
       </h2>
       <p className="mt-10 whitespace-nowrap text-4xl font-bold text-slate-200">
-        Answer 7 questions. Beat the clock. Win prizes.
+        Answer 7 questions. Beat the clock. Win prizes!
       </p>
       <p className="mt-14 whitespace-nowrap text-4xl font-black text-[#F4D03F]">
         Win Amazing Prizes

@@ -32,7 +32,7 @@ function getResultContent(score: number) {
   if (score >= 1) {
     return {
       headline: "Nice run! 🎯",
-      message: "Good effort — thanks for taking the challenge!",
+      message: "Good effort - thanks for taking the challenge!",
       cardClass: "border-white/10 bg-white/[0.08] shadow-2xl shadow-black/30 result-card-entry",
       headlineClass: "text-white",
     };
@@ -75,10 +75,10 @@ export default async function ResultPage() {
         className={`mx-auto w-full max-w-3xl rounded-[2rem] p-8 text-center backdrop-blur ${resultContent.cardClass}`}
       >
         <Image
-          src="/DNA.png"
+          src="/dna-it-white-logo.svg"
           alt="DnA IT"
           width={150}
-          height={62}
+          height={41}
           className="mx-auto mb-6 h-auto w-32"
         />
         <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F4D03F]">
