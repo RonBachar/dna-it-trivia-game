@@ -237,7 +237,7 @@ export function StrategyScreen() {
           />
           <StrategyHexagon
             icon={Network}
-            label="Communication"
+            label="Networking"
             fadeClass="strategy-hex-fade-2"
           />
           <StrategyHexagon
